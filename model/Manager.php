@@ -1,5 +1,4 @@
 <?php
-
 namespace Projet\Model;
 
 class Manager
