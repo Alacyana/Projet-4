@@ -1,20 +1,13 @@
 <?php
 namespace Projet\PostController;
-<<<<<<< Updated upstream
-=======
 session_start();
 
 require('model/PostManager.php');
->>>>>>> Stashed changes
 
 class PostController
 {
 	public function listPosts()
 	{
-<<<<<<< Updated upstream
-		require('model/PostManager.php');
-=======
->>>>>>> Stashed changes
 		$postManager = new \Projet\Model\PostManager();
 		$posts = $postManager->getPosts();
 		
@@ -22,29 +15,6 @@ class PostController
 		require('view/frontend/listPostsView.php');
 		require('view/sampleViewBot.php');
 	}
-<<<<<<< Updated upstream
-/*
-	public function post()
-	{
-		$postManager = new \Projet\Model\PostManager();
-		$commentManager = new \Projet\Model\CommentManager();
-		$post = $postManager->getPost($_GET['id']);
-		$comment = $commentManager->getComments();
-		
-		require('view/frontend/postView.php');
-	}
-
-	
-
-	
-
-	public function removePost()
-	{
-		$postManager = new \Projet\Model\PostManager();
-		$removePost = $postManager->deletePost();
-			}*/
-
-=======
 
 	public function post()
 	{
@@ -111,5 +81,4 @@ class PostController
 		
 		header('Location:http://blog.nexus-archeage.fr?action=post&id='.$id_post);
 	}	
->>>>>>> Stashed changes
 }
