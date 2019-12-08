@@ -2,42 +2,13 @@
 
 namespace Projet\Model;
 
-<<<<<<< Updated upstream
-require("model/Manager.php");
-=======
 require_once("model/Manager.php");
->>>>>>> Stashed changes
 
 class PostManager extends Manager
 {
     public function getPosts()
     {
 		$db = $this->dbConnect();
-<<<<<<< Updated upstream
-		$request = $db->prepare('SELECT title, text FROM posts ORDER BY creation_date DESC');
-		$request->execute(array());
-		return $request;
-	}
-	/*
-	public function insertPost()
-	{
-		$db = $this->dbConnect();
-		$request = $db->
-	}
-
-	public function updatePost()
-	{
-		$db = $this->dbConnect();
-		$request = $db->
-	}
-	
-	public function deletePost()
-	{
-		$db = $this->dbConnect();
-		$request = $db->
-	}*/
-}	
-=======
 		$request = $db->prepare('SELECT title, text, id FROM posts ORDER BY creation_date DESC');
 		$request->execute(array());
 		return $request;
@@ -129,4 +100,3 @@ class PostManager extends Manager
 		'id_comment'=> $id_comment));
 	}
 }	
->>>>>>> Stashed changes
