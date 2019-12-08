@@ -1,75 +1,52 @@
 <?php
-require('controller/frontend.php');
-require('controller/backend.php');
+require_once("config.php");
+require_once('controller/PostController.php');
+require_once('controller/DashboardController.php');
 
-try
-{
 	if (isset($_GET['action']))
 	{
 		switch ($_GET['action'])
-		{
-			case 'listPosts':
-				listPosts();
+		{			
+			case 'dashboard':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->dashboard();
+				break;
+			case 'disconnection':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->disconnection();
+				break;
+			case 'deleteReport':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->removeReport();
+				break;
+			case 'deleteComment':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->removeComment();
+				break;
+			case 'addPost':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->addPost();
+				break;
+			case 'modifyPost':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->modifyPost();
+				break;	
+			case 'deletePost':
+				$dashboardController = new \Projet\DashboardController\DashboardController();
+				$dashboardController->removePost();
 				break;
 			case 'post':
-				if (isset($_GET['id']) && $_GET['id'] > 0)
-				{	
-					posts();
-				}
-				else 
-				{
-					throw new Exception('Aucun identifiant de billet envoyé');
-				}	
+				$postController = new \Projet\PostController\PostController();
+				$postController->post();
 				break;
-				case 'addComment':
-					if (isset($_GET['id']) && $_GET['id'] > 0) 
-					{
-						if (!empty($_POST['author']) && !empty($_POST['comment'])) 
-						{
-							addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-						}
-						else 
-						{
-							throw new Exception('Tous les champs ne sont pas remplis');
-						}
-					}
-					else
-					{
-						throw new Exception('Aucun identifiant de billet envoyé');
-					}
-				case 'reportComment':
-					if (isset($_GET['id']) && $_GET['id'] > 0)
-					{
-						reportComment();
-					}
-					else
-					{
-						throw new Exception('Aucun identifiant de commentaire');
-					}
-					break;	
-				
-			case 'dashboard':
-				dashboard();
-				break;		
-			case 'modifyPost':
-				if (isset($_GET['id']) && $_GET['id'] > 0)
-				{
-					modifyPost();
-				}
-				else
-				{
-					throw new Exception('Aucun identifiant de billet');
-				}
-			
-			
+			case 'reportComment':
+				$postController = new \Projet\PostController\PostController();
+				$postController->reportComment();
+				break;
 		}
 	}
 	else
 	{
-		listPosts();
+		$postController = new \Projet\PostController\PostController();
+		$postController->listPosts();
 	}	
-}
-catch()
-{
-	
-}
